@@ -17,18 +17,27 @@
     request.send()
 })
 */
-const getNation = (shortName) => {
+const getNation = async (shortName) => {
+    const response = await fetch('http://restcountries.eu/rest/v2/all')
+    if (response.status === 200){
+        const responseJSON = await response.json()
+        const newNation = responseJSON.filter((country) => country.alpha2Code === shortName)
+        if (newNation.length === 1){
+            console.log(newNation[0].name)
+        }else{
+            console.log(`Could not find a nation with short name ${shortName}`)
+        }
+    } else {
+        console.log("some error")
+    }
+}
+
+const getNationOld = (shortName) => {
     fetch('http://restcountries.eu/rest/v2/all').then((response) => {
         if (response.status === 200){
             return response.json() // a new Promise
         }
     }).then((response) => {
-        /*
-        response.forEach((country)=>{
-            if (country.alpha2Code === shortName){
-                return console.log(country.name)
-            }
-        })*/
         const newNation = response.filter((country) => country.alpha2Code === shortName)
         if (newNation.length === 1){
             console.log(newNation[0].name)
