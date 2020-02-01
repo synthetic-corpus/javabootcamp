@@ -14,6 +14,16 @@ const getPuzzle = (wordCount) => new Promise((resolve, reject) => {
     request.send()
 })
 
+const getNewPuzzle = async (wordCount) => {
+    const response = await fetch(`http://puzzle.mead.io/puzzle?wordCount=${wordCount}`)
+    if (response.status === 200){
+        const data = await response.json()
+        return data.puzzle
+    }else{
+        throw new Error
+    }
+} 
+
 const getCountry = (countryCode) => new Promise((resolve, reject) => {
     const countryRequest = new XMLHttpRequest()
 
