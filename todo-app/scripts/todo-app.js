@@ -17,13 +17,11 @@ document.querySelector('#search-text').addEventListener('input', (e) => {
 document.querySelector('#new-todo').addEventListener('submit', (e) => {
     
     e.preventDefault()
-    console.log(e.target.elements.text.value)
-    const text = e.target.elements.text.value
-    console.log(text)
+    const text = e.target.elements.text.value.trim()
     if (text.length > 0){
         todos.push({
             id: uuidv4(),
-            text: e.target.elements.text.value,
+            text: text,
             completed: false
         })
         saveTodos(todos)
