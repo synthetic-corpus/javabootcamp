@@ -11,12 +11,17 @@
                 <h2 class="header__subtitle">Take notes and never forget</h2>
             </div>
         </div>
-        <input id="search-text" type="text" placeholder="Filter notes">
-        <select id="filter-by">
-            <option value="byEdited">Sort by last edited</option>
-            <option value="byCreated">Sort by recently created</option>
-            <option value="alphabetical">Sort alphabetically</option>
-        </select>
+        <div class="actions">
+            <div class="actions__container">
+                <input id="search-text" type="text" class="input" placeholder="Filter notes">
+                <select id="filter-by" class="dropdown">
+                    <option value="byEdited">Sort by last edited</option>
+                    <option value="byCreated">Sort by recently created</option>
+                    <option value="alphabetical">Sort alphabetically</option>
+                </select>
+            </div>
+        </div>
+        
         <div id="notes"></div>
         <button id="create-note">Create Note</button>  
         <script src="http://wzrd.in/standalone/uuid%2Fv4@latest"></script>
